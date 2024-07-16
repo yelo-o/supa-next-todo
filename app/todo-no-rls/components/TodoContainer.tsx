@@ -4,7 +4,14 @@ import useTodosController from '../hooks/useTodosController';
 import TodoList from '@/components/ui/TodoList';
 
 const TodoContainer = () => {
-    const { loading, todos } = useTodosController();
+    const { 
+        loading, 
+        todos,
+        onCreateEmptyTodos,
+        onDeleteTodos,
+        onSearchTodos,
+        onUpdateTodos
+    } = useTodosController();
 
     return (
         <div>
@@ -14,19 +21,10 @@ const TodoContainer = () => {
             loading={loading}
             todoListData={todos}
             isReadOnly={false}
-            onUpdate={(id, content) => {
-                console.log(">>id, content, id, content");
-            }}
-            onCreate={()=>{
-                console.log(">>onCreate");
-            }}
-            onDelete={(id)=>{
-                console.log(">>id", id);
-            }}
-            onSearch={(terms) => {
-                console.log(">>terms", terms);
-            }}
-
+            onUpdate={onUpdateTodos}
+            onCreate={onCreateEmptyTodos}
+            onDelete={onDeleteTodos}
+            onSearch={onSearchTodos}
             />
         </div>
     )

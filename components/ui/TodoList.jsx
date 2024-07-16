@@ -96,8 +96,8 @@ const TodoList = ({
                 <TodoListItem
                   key={todo?.id}
                   todo={todo}
-                  onUpdate={() => {}}
-                  onDelete={() => {}}
+                  onUpdate={onUpdate}
+                  onDelete={onDelete}
                 />
               );
             })}
