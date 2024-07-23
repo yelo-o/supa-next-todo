@@ -17,8 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      안녕 난 루트야 (먼저 도착했음)
-      {children}
+        {children}
       </body>
     </html>
   );
