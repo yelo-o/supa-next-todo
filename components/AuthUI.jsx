@@ -16,6 +16,25 @@ const AuthUI = () => {
     if (result?.data?.user) setUser(result?.data?.user);
   };
 
+  const handleGoogleLogin = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider:"google",
+      options: {
+        redirectTo:process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO,
+      },
+    });
+  };
+  const handleGithubLogin = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider:"github",
+      options: {
+        redirectTo:process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO,
+      },
+    });
+  };
+
+
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     window.location.reload();
