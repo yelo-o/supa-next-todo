@@ -1,5 +1,5 @@
 "use client"
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import { Auth } from "@supabase/auth-ui-react";
 import {supabase, ThemeSupa} from "@supabase/auth-ui-shared";
 import {createSupabaseBrowserClient} from "@/lib/client/supabase";
@@ -10,11 +10,12 @@ const AuthUI = () => {
   const supabase = createSupabaseBrowserClient();
   const isMount = useHydrate();
 
-  const getUserInfo = async () => {
-    const result = await supabase.auth.getUser();
-    console.log(result);
-    if (result?.data?.user) setUser(result?.data?.user);
-  };
+  const getUserInfo = useCallback(
+    async () => {
+      const result = await supabase.auth.getUser();
+      console.log(result);
+      if (result?.data?.user) setUser(result?.data?.user);
+  },[supabase]);
 
   const handleGoogleLogin = async () => {
     await supabase.auth.signInWithOAuth({
@@ -42,7 +43,7 @@ const AuthUI = () => {
 
   useEffect(() => {
     getUserInfo();
-  }, [])
+  }, [getUserInfo])
 
   if (!isMount) return null;
 
