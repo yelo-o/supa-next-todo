@@ -8,7 +8,7 @@ export default async function Home() {
   return(
   <main>
     {user ? (
-      <TodoContainer/>
+      <TodoContainer ownerUserId={user?.id}/>
     ) : (
       <>
         <div className=" flex flex-col items-center mt-12">

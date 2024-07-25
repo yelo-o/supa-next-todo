@@ -17,9 +17,9 @@ const TodoList = ({
 }) => {
   const [userSearchInput, setUserSearchInput] = useState("");
   const [copiedText, copy] = useCopyToClipboard();
-
+//http://localhost:3000/share/0851d227-e0ba-4b2b-8938-848a7d8fa2d3
   const handleCopy = () => {
-    const shareLink = `${"todolist공유할 링크"}/share/${ownerUserId}`;
+    const shareLink = `${process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO_HOME}/share/${ownerUserId}`;
     copy(shareLink)
       .then(() => {
         window.alert(`공유링크 복사 완료 \n ${shareLink}`);
