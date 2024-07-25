@@ -1,4 +1,6 @@
 import React from 'react'
+import {getProfileById} from "@/actions/auth/user.action";
+import {permanentRedirect} from "next/navigation";
 
 interface SharePageProps {
   params: { user_id: string },
@@ -6,8 +8,10 @@ interface SharePageProps {
 }
 
 const SharePage = async (props: SharePageProps) => {
-  console.log(">> props: ", props)
   const userId = props?.params?.user_id;
+  const profile = await getProfileById({ serverComponent: true, userId });
+
+  if (!profile) permanentRedirect("/");
 
   return (
     <div>
