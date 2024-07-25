@@ -1,6 +1,26 @@
 import Image from "next/image";
 import TodoContainer from "./components/TodoContainer";
+import { getUser } from "@/actions/auth/user.action";
+import {DotLoader} from "react-spinners";
 
-export default function Home() {
-  return <main><TodoContainer/></main>;
+export default async function Home() {
+  const user = await getUser({ serverComponent: true });
+  return(
+  <main>
+    {user ? (
+      <TodoContainer/>
+    ) : (
+      <>
+        <div className=" flex flex-col items-center mt-12">
+          <div>
+            <DotLoader />
+          </div>
+          <div className=" font-bold my-2">
+            Please login first...
+          </div>
+        </div>
+      </>
+    )}
+  </main>
+  );
 }
