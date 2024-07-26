@@ -13,5 +13,5 @@ export const getProfileById = async ({
   const supabase = await createServerSideClient(serverComponent);
   const profile = await supabase.from("profiles").select("*").eq("id", userId);
 
-  return profile?.data;
+  return profile?.data?.[0];
 }
