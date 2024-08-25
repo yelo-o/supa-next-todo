@@ -1,13 +1,12 @@
 // RouteHandler, RSC, Middleware, ServerActions
 
-
-// - RouteHandler, ServerActions
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { Database } from "@/types/supabase";
 import { NextRequest, NextResponse } from "next/server";
 import { getCookie, setCookie } from "cookies-next";
 
+// - RouteHandler, ServerActions
 export const createServerSideClient = async(serverComponent = false) => {
   const cookieStore = cookies();
 

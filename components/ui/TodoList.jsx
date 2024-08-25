@@ -18,7 +18,7 @@ const TodoList = ({
 }) => {
   const [userSearchInput, setUserSearchInput] = useState("");
   const [copiedText, copy] = useCopyToClipboard();
-//http://localhost:3000/share/0851d227-e0ba-4b2b-8938-848a7d8fa2d3
+  //http://localhost:3000/share/0851d227-e0ba-4b2b-8938-848a7d8fa2d3
   const handleCopy = () => {
     const shareLink = `${process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO_HOME}/share/${ownerUserId}`;
     copy(shareLink)
@@ -94,7 +94,7 @@ const TodoList = ({
           <ul className="flex flex-col gap-6">
             {(todoListData ?? []).map((todo) => {
               if (isReadOnly) {
-                return <TodoListItemReadonly key={todo?.id} todo={todo} />
+                return <TodoListItemReadonly key={todo?.id} todo={todo} />;
               }
               return (
                 <TodoListItem
